@@ -7,18 +7,18 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarImagesController : ControllerBase
+    public class ProductImagesController : ControllerBase
     {
-        ICarImageService _carImageService;
-        public CarImagesController(ICarImageService carImageService)
+        IProductImageService _productImageService;
+        public ProductImagesController(IProductImageService productImageService)
         {
-            _carImageService = carImageService;
+            _productImageService = productImageService;
         }
 
         [HttpPost("add")]
-        public IActionResult Add([FromForm] IFormFile file, [FromForm] CarImage carImage)
+        public IActionResult Add([FromForm] IFormFile file, [FromForm] ProductImage productImage)
         {
-            var result = _carImageService.Add(file, carImage);
+            var result = _productImageService.Add(file, productImage);
             if (result.Success)
             {
                 return Ok(result);
@@ -27,10 +27,10 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(CarImage carImage)
+        public IActionResult Delete(ProductImage productImage)
         {
-            var carDeleteImage = _carImageService.GetById(carImage.Id).Data;
-            var result = _carImageService.Delete(carDeleteImage);
+            var productDeleteImage = _productImageService.GetById(productImage.Id).Data;
+            var result = _productImageService.Delete(productDeleteImage);
             if (result.Success)
             {
                 return Ok(result);
@@ -40,9 +40,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update([FromForm] IFormFile file, [FromForm] CarImage carImage)
+        public IActionResult Update([FromForm] IFormFile file, [FromForm] ProductImage productImage)
         {
-            var result = _carImageService.Update(file, carImage);
+            var result = _productImageService.Update(file, productImage);
             if (result.Success)
             {
                 return Ok(result);
@@ -54,7 +54,7 @@ namespace WebAPI.Controllers
         [HttpGet("getbyImageId")]
         public IActionResult GetByImageId(int imageId)
         {
-            var result = _carImageService.GetById(imageId);
+            var result = _productImageService.GetById(imageId);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,7 +65,7 @@ namespace WebAPI.Controllers
         [HttpGet("getAll")]
         public IActionResult GetAll()
         {
-            var result = _carImageService.GetAll();
+            var result = _productImageService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -74,10 +74,10 @@ namespace WebAPI.Controllers
 
         }
 
-        [HttpGet("getbyCarId")]
-        public IActionResult GetByCarId(int carId)
+        [HttpGet("getbyProductId")]
+        public IActionResult GetByProductId(int productId)
         {
-            var result = _carImageService.GetByCarId(carId);
+            var result = _productImageService.GetByProductId(productId);
             if (result.Success)
             {
                 return Ok(result);

@@ -64,7 +64,7 @@ namespace Business.Concrete
         }
 
 
-        public IDataResult<List<ProductImage>> GetByCarId(int productId)
+        public IDataResult<List<ProductImage>> GetByProductId(int productId)
         {
             var result = BusinessRules.Run(CheckIfAnyImageExists(productId));
             {
@@ -105,5 +105,6 @@ namespace Business.Concrete
 
             return new ErrorResult();
         }
+
     }
 }
