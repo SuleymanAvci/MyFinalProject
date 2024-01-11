@@ -1,9 +1,13 @@
 ﻿using Core.Entities.Concrete;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using System.Text;
+using System.Xml.Linq;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -25,3 +29,78 @@ namespace DataAccess.Concrete.EntityFramework
 
     }
 }
+
+
+// -------------------------- SQL'de  User, OperationClaim, UserOperationClaim Tabloları oluşturulması için Script kodu;
+
+//USE[Northwind]
+//GO
+
+//SET ANSI_NULLS ON
+//GO
+
+//SET QUOTED_IDENTIFIER ON
+//GO
+
+//CREATE TABLE [dbo].[Users](
+//    [Id][int] IDENTITY(1, 1) NOT NULL,
+//    [FirstName][varchar](50) NOT NULL,
+//    [LastName][varchar](50) NOT NULL,
+//    [Email][varchar](50) NOT NULL,
+//    [PasswordHash][binary](500) NOT NULL,
+//    [PasswordSalt][binary](500) NOT NULL,
+//    [Status][bit] NOT NULL,
+// CONSTRAINT[PK_Users] PRIMARY KEY CLUSTERED
+//(
+//    [Id] ASC
+//)WITH(PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON[PRIMARY]
+//) ON[PRIMARY]
+//GO
+
+
+//---------------------------------------------
+
+//USE[Northwind]
+//GO
+
+///****** Object:  Table [dbo].[UserOperationClaims]    Script Date: 11.01.2024 17:23:45 ******/
+//SET ANSI_NULLS ON
+//GO
+
+//SET QUOTED_IDENTIFIER ON
+//GO
+
+//CREATE TABLE [dbo].[UserOperationClaims](
+//    [Id][int] IDENTITY(1, 1) NOT NULL,
+//    [UserId][int] NOT NULL,
+//[OperationClaimId][int] NOT NULL,
+// CONSTRAINT[PK_UserOperationClaims] PRIMARY KEY CLUSTERED
+//(
+//    [Id] ASC
+//)WITH(PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON[PRIMARY]
+//) ON[PRIMARY]
+//GO
+
+//---------------------------------------------
+
+//USE[Northwind]
+//GO
+
+///****** Object:  Table [dbo].[OperationClaims]    Script Date: 11.01.2024 17:24:01 ******/
+//SET ANSI_NULLS ON
+//GO
+
+//SET QUOTED_IDENTIFIER ON
+//GO
+
+//CREATE TABLE [dbo].[OperationClaims](
+//    [Id][int] IDENTITY(1, 1) NOT NULL,
+//    [Name][varchar](250) NOT NULL,
+// CONSTRAINT[PK_OperationClaims] PRIMARY KEY CLUSTERED
+//(
+//    [Id] ASC
+//)WITH(PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON[PRIMARY]
+//) ON[PRIMARY]
+//GO
+
+
