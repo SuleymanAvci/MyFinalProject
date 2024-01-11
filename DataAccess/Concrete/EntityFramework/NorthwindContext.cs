@@ -47,8 +47,8 @@ namespace DataAccess.Concrete.EntityFramework
 //    [FirstName][varchar](50) NOT NULL,
 //    [LastName][varchar](50) NOT NULL,
 //    [Email][varchar](50) NOT NULL,
-//    [PasswordHash][binary](500) NOT NULL,
-//    [PasswordSalt][binary](500) NOT NULL,
+//    [PasswordHash][varbinary](500) NOT NULL,
+//    [PasswordSalt][varbinary](500) NOT NULL,
 //    [Status][bit] NOT NULL,
 // CONSTRAINT[PK_Users] PRIMARY KEY CLUSTERED
 //(
